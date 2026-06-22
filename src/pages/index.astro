@@ -1,11 +1,32 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const my_num = 2;
+const my_obj = {
+    name: "Jane Doe",
+    age: 40,
+    occupation: "Software Engineer",
+    hobbies: ["tennis", "swimming"],
+    friends: ["Chris", "Nicole"],
+    address: {
+        street: "Main Street",
+        city: "Dublin",
+        country: "Ireland",
+    },
+};
+import people from "../data/people.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const res = await fetch("https://jsonplaceholder.typicode.com/todos/1"); // already wrapped in async so only need to use await
+const data = await res.json();
+console.log("- data: ", data); //show data- to note that this is static so when it's built it's baked into html
+// and doesn't update, will do more on dynmaic later
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Home">
+        {my_obj.name} ordered {my_num * 6} cupcakes in {my_obj.address.city} for
+        {my_obj.friends.map((person) => <p>{person}</p>)}
+        Her best friends are {people.map((friend) => (
+          <p>{friend.name}</p>
+          <p>{friend.age}</p>))}
+
+          {data.title}
+
+</BaseLayout>
