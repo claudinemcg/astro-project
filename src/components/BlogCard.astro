@@ -1,0 +1,30 @@
+---
+const { label, heading, description, author, date, thumbnail, author_image } =
+    Astro.props;
+---
+
+<div>
+    <div class="blog_image-wrapper">
+        <img class="blog_image" src={thumbnail} />
+    </div>
+
+    <div class="blog_content-top">
+        <div class="label_wrapper">
+            <div class="label">{label}</div>
+        </div>
+        <h1 class="blog_heading">{heading}</h1>
+        <text class="blog_description">{description}</text>
+    </div>
+
+    <div class="blog_content-bottom">
+        <div class="author_info">
+            <div class="author_image-wrapper">
+                <img class="author_image" src={author_image} />
+            </div>
+            <div class="author_content">
+                <h2 class="author_name">{author}</h2>
+                <text class="blog_date">{date}</text>
+            </div>
+        </div>
+    </div>
+</div>
