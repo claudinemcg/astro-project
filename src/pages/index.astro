@@ -1,5 +1,6 @@
 ---
 const my_num = 2;
+
 const my_obj = {
     name: "Jane Doe",
     age: 40,
@@ -12,6 +13,7 @@ const my_obj = {
         country: "Ireland",
     },
 };
+
 import people from "../data/people.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const res = await fetch("https://jsonplaceholder.typicode.com/todos/1"); // already wrapped in async so only need to use await
@@ -21,6 +23,15 @@ console.log("- data: ", data); //show data- to note that this is static so when 
 ---
 
 <BaseLayout title="Home">
+    <h1>Home</h1>
+
+    <!-- Option1 (rest in script tag below)-->
+  <p id="copyright"></p>
+
+
+    <!-- Option 2 (not live)
+    <p id="copyright">{new Date().getFullYear().toString()}</p>-->
+
         {my_obj.name} ordered {my_num * 6} cupcakes in {my_obj.address.city} for
         {my_obj.friends.map((person) => <p>{person}</p>)}
         Her best friends are {people.map((friend) => (
@@ -29,4 +40,22 @@ console.log("- data: ", data); //show data- to note that this is static so when 
 
           {data.title}
 
+
+
 </BaseLayout>
+
+<script>
+// only works on this page
+// takes over from server side e.g. if you had <p id="copyright">2000</p> above, this will change it to latest year
+// Option 1: if I do this here it will be live on page load
+  import {getCopyrightYear} from '../lib/utils';
+  const year = getCopyrightYear();
+  const copyright = document.querySelector('#copyright') as unknown as HTMLParagraphElement;
+  copyright.textContent = year.toString();
+
+
+  const heading = document.querySelector('h1') as unknown as HTMLHeadElement;
+  heading.addEventListener('click', () => {
+  console.log("clicked on heading");
+  })
+</script>

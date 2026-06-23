@@ -1,6 +1,8 @@
 ---
 const { title = "Site Name" } = Astro.props; // deconstruct,  title is from Astro.props.title
 // use Site Name if there's no title names
+import Link from "../components/Link.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -15,8 +17,9 @@ const { title = "Site Name" } = Astro.props; // deconstruct,  title is from Astr
     </head>
     <body>
         <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
+            <!-- <a href="/about">About</a> -->
         </nav>
         <slot />
     </body>
