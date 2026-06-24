@@ -1,0 +1,32 @@
+[
+  {
+    "label": "technology",
+    "heading": "Why is the Tesla Cybertruck designed the way it is?",
+    "description": "An exploration into the truck's polarising design.",
+    "author": "Carrie Brewer",
+    "date": "2026-06-24",
+    "thumbnail": "/src/assets/car.jpg",
+    "author_image": "/src/assets/carrie-brewer.jpg",
+    "labelColor": "bg-cyan-600"
+  },
+  {
+    "label": "popular",
+    "heading": "How do you keep going when you don't know what's next",
+    "description": "The future can be scary, but there are ways to deal with that fear..",
+    "author": "Jerome Walton",
+    "date": "2026-06-23",
+    "thumbnail": "/src/assets/balloon.jpg",
+    "author_image": "/src/assets/jerome-walton.jpg",
+    "labelColor": "bg-purple-600"
+  },
+  {
+    "label": "design",
+    "heading": "Ten Rules of Dashboard Design",
+    "description": "Dashboard Design Guidelines",
+    "author": "Lewis Daniels",
+    "date": "2025-12-23",
+    "thumbnail": "/src/assets/city.jpg",
+    "author_image": "/src/assets/lewis-daniels.jpg",
+    "labelColor": "bg-pink-600"
+  }
+]

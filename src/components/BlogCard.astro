@@ -1,5 +1,5 @@
 ---
-const {
+/* const {
     label,
     labelColor,
     heading,
@@ -8,7 +8,13 @@ const {
     date,
     thumbnail,
     author_image,
-} = Astro.props;
+    } = Astro.props; */
+
+const { blogpost } = Astro.props;
+// blogposts.json now holds the array of posts so this destructures each one
+// blogpost.label, blogpost.labelColor, blogpost.heading, blogpost.description, blogpost.author, blogpost.date, blogpost.thumbnail, blogpost.author_image
+
+const bgColor = blogpost.labelColor ?? "bg-gray-600";
 
 function formatDate(dateStr: string) {
     const now = new Date();
@@ -42,38 +48,38 @@ function formatDate(dateStr: string) {
     });
 }
 
-const formattedDate = formatDate(date);
+const formattedDate = formatDate(blogpost.date);
 ---
 
 <div class="blog_card">
     <div class="blog_image-wrapper">
-        <img class="blog_image" src={thumbnail} />
+        <img class="blog_image" src={blogpost.thumbnail} />
     </div>
     <div class="blog_content">
         <div class="blog_content-top">
             <div class="inline-flex">
                 <div
-                    class={`${labelColor} text-white font-semibold px-4 py-1 rounded-full text-sm`}
+                    class={`${blogpost.bgColor} text-white font-semibold px-4 py-1 rounded-full text-sm`}
                 >
-                    {label}
+                    {blogpost.label}
                 </div>
             </div>
-            <h1 class="blog_heading text-lg md:text-xl font-semibold">
-                {heading}
-            </h1>
-            <text class="blog_description">{description}</text>
+            <h2 class="blog_heading text-lg md:text-xl font-semibold">
+                {blogpost.heading}
+            </h2>
+            <p class="blog_description">{blogpost.description}</p>
         </div>
 
         <div class="blog_content-bottom">
             <div class="author_image-wrapper">
                 <img
                     class="author_image w-16 h-16 rounded-full object-cover"
-                    src={author_image}
+                    src={blogpost.author_image}
                 />
             </div>
             <div class="author_content">
-                <h2 class="author_name">{author}</h2>
-                <text class="blog_date">{formattedDate}</text>
+                <h3 class="author_name">{blogpost.author}</h3>
+                <span class="blog_date">{formattedDate}</span>
             </div>
         </div>
     </div>
@@ -96,10 +102,11 @@ const formattedDate = formatDate(date);
     }
 
     .blog_image {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        max-width: 100%;
     }
 
     .blog_content {
