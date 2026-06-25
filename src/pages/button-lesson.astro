@@ -1,6 +1,6 @@
 ---
 import Button from "../components/Button.astro";
-const html = `<strong>Hi</strong>`;
+const html = `<p>Hi</p> <p>there</p>`;
 ---
 
 <html lang="en">
@@ -22,6 +22,9 @@ const html = `<strong>Hi</strong>`;
             id={"my-id"}
         >
             <div set:html={html} />
+            <!-- They will stack under each other regardless of flex -->
+            <Fragment set:html={html} />
+            <!-- They will stack across the row if there's flex -->
         </Button>
     </body>
     <!-- For tailwind can pass in like this classList={"bg-purple-600 text-white px-6 py-3 rounded-lg"} -->
