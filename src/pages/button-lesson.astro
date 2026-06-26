@@ -1,51 +1,32 @@
 ---
 import Button from "../components/Button.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const html = `<p>Hi</p> <p>there</p>`;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro Components</title>
-    </head>
-    <body>
-        <h1>Astro Components</h1>
+<BaseLayout>
+    <h1>Button Lesson</h1>
 
-        <Button
-            classList={["red", "blue"]}
-            isBordered={true}
-            background={"green"}
-            color={"white"}
-            id={"my-id"}
-        >
-            <div set:html={html} />
-            <!-- They will stack under each other regardless of flex -->
-            <Fragment set:html={html} />
-            <!-- They will stack across the row if there's flex -->
-        </Button>
-    </body>
-    <!-- For tailwind can pass in like this classList={"bg-purple-600 text-white px-6 py-3 rounded-lg"} -->
-</html>
+    <Button
+        classList={["red", "blue"]}
+        isBordered={true}
+        background={"green"}
+        color={"white"}
+        id={"my-id"}
+    >
+        <!-- <div set:html={html} /> -->
+        <!-- They will stack under each other regardless of flex -->
+        <Fragment set:html={html} />
+        <!-- They will stack across the row if there's flex -->
+    </Button>
+</BaseLayout>
+
 <script>
     const button = document.getElementById("my-id");
-    button.addEventListener("click", () => {
+    button?.addEventListener("click", () => {
         alert("Button clicked!");
     });
 </script>
-<style>
-    @import "https://unpkg.com/open-props";
-    @import "https://unpkg.com/open-props/normalize.min.css";
-    body {
-        display: grid;
-        place-content: center;
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-</style>
-
 <style>
     @import "https://unpkg.com/open-props";
     @import "https://unpkg.com/open-props/normalize.min.css";
