@@ -30,6 +30,18 @@ const headings = [
             </Heading>
         ))
     }
+    <!-- why use headings.map((heading) => ( ...
+    instead of   headings.map((heading) => { ...
+    it's a shorter syntax, and avoids the need for a return statement since the expression is implicitly returned. You would need a return statement if you weren't returning a value from the function.
+    e.g.{headings.map((heading) => {
+        const uppercaseText = heading.text.toUpperCase();
+        return (
+            <Heading tag={heading.tag} size={heading.size}>{uppercaseText}</Heading>
+        );
+    }); }
+    -->
+
+    -->
 </BaseLayout>
 
 <style>
