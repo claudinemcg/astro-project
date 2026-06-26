@@ -1,5 +1,4 @@
 ---
-import Button from "../components/Button.astro";
 import Heading from "../components/Heading.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -11,26 +10,16 @@ const headings = [
 ---
 
 <BaseLayout>
-    <h1>Heading Lesson</h1>
-
-    <Button color={"white"} id={"my-id"}>Click me</Button>
-
-    <Heading tag={"h2"} size={"h2"}>This is a H2</Heading>
-    <Heading tag={"h3"} size={"h3"}>This is a H3</Heading>
-    <Heading tag={"h4"} size={"h4"}>This is a H4</Heading>
-    <Heading tag={"h5"} size={"h5"}>This is a H5</Heading>
-
     <Heading tag="h1" size="h6">This is my heading using sizes</Heading>
 
     <!-- Using const headings -->
-    <!-- can't use when we introduce typescript to heading component
     {
         headings.map((heading) => (
-            <Heading tag={heading.tag} size={heading.size}>
+            <Heading tag="h2" size="h2">
                 {heading.text}
             </Heading>
         ))
-    } -->
+    }
     <!-- why use headings.map((heading) => ( ...
     instead of   headings.map((heading) => { ...
     it's a shorter syntax, and avoids the need for a return statement since the expression is implicitly returned. You would need a return statement if you weren't returning a value from the function.
@@ -40,8 +29,6 @@ const headings = [
             <Heading tag={heading.tag} size={heading.size}>{uppercaseText}</Heading>
         );
     }); }
-    -->
-
     -->
 </BaseLayout>
 
